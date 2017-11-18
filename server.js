@@ -27,4 +27,3 @@ stock().then(val => {
 })
 
 console.log(chalk.bgGreen("Live") + " " + ("Bot is up and running"))
-console.log(process.env)
