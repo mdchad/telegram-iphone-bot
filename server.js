@@ -5,6 +5,7 @@ const token = process.env.TELEGRAM_KEY
 const bot = new TelegramBot(token, {polling: true})
 const stock = require('./index')
 
+
 bot.onText(/\/start/, (msg) => {
     bot.sendMessage(msg.chat.id, "Hello fellow human. Type 'stock' to get the stock updates for iphone x.");
 });
