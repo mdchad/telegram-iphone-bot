@@ -14,9 +14,7 @@
     "cron": "^1.3.0",
     "dotenv": "^4.0.0",
     "node-telegram-bot-api": "^0.29.0",
-    "scrape-it": "^4.0.0"
-  },
-  "devDependencies": {
+    "scrape-it": "^4.0.0",
     "nodemon": "^1.12.1"
   }
 }
