@@ -1,7 +1,7 @@
+require('dotenv').config()
 const chalk = require('chalk')
 const TelegramBot = require('node-telegram-bot-api')
-const telegram = require('./config')
-const token = telegram.ACCESS
+const token = process.env.TELEGRAM_KEY
 const bot = new TelegramBot(token, {polling: true})
 const stock = require('./index')
 
