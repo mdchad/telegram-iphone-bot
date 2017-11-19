@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const TelegramBot = require('node-telegram-bot-api')
 const token = process.env.TELEGRAM_KEY
 const bot = new TelegramBot(token, {polling: true})
-const stock = require('./index')
+const scrape = require('./index')
 
 
 bot.onText(/\/start/, (msg) => {
@@ -13,8 +13,7 @@ bot.onText(/\/start/, (msg) => {
 bot.on('message', (msg) => {
     let stock = "stock";
     if (msg.text.toString().toLowerCase().indexOf(stock) === 0) {
-        bot.sendMessage(msg.chat.id, "Please wait while we are checking the iphone stock");
-        stock().then(val => {
+        scrape().then(val => {
             if (val) {
                 let stockInfo = ''
                 val.forEach((x, i) => {
@@ -25,7 +24,18 @@ bot.on('message', (msg) => {
         }).catch(err => {
             throw err
         })
+        bot.sendMessage(msg.chat.id, "Please wait while we are checking the iphone stock");
     }
 }); 
+
+// handle error
+
+bot.on('webhook_error', (error) => {
+  console.log(error.code);  // => 'EPARSE'
+});
+
+bot.on('polling_error', (error) => {
+  console.log(error.code);  // => 'EFATAL'
+});
 
 console.log(chalk.bgGreen("Live") + " " + ("Bot is up and running"))
