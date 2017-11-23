@@ -28,6 +28,37 @@ bot.on('message', (msg) => {
     }
 }); 
 
+/**
+ * pseudo code
+ * 
+ * bot.onText(/\/subscribe/, msg => {
+ *  let collection = []
+ *  new cronJob({ * * * * *,
+ *      function() {
+ *          scrape().then(val => {
+ *              if(!collection) {
+ *                  collection.push(val)
+ *                  bot.sendMessage('thanks for subscribing', val)
+ *              }
+ *              else if (collection.length) {
+ *                  //second value
+ *                  collection.push(val2)
+ *                  //compare
+ *                  json.stringify()
+ *                  if (true)
+ *                      bot.sendMessage('updated !!', val2)
+ *              }   
+ *          })    
+ *      }  
+ *  })
+ * })
+ *
+ * 
+ * 
+ * 
+ * 
+ */
+
 // handle error
 
 bot.on('webhook_error', (error) => {
